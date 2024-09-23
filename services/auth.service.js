@@ -26,7 +26,7 @@ const loginService = async (data) => {
   const DBResponse = await Users.query().findOne({
     email: data.email,
   });
-  if (cmpHash(data.password, DBResponse.password)) {
+  if (await cmpHash(data.password, DBResponse.password)) {
     return {
       accessToken: generateAccessToken({
         userId: DBResponse.id,
@@ -40,7 +40,7 @@ const loginService = async (data) => {
   }
 };
 
-const logoutService = async (data) => {
+const logoutService = () => {
   return {
     accessToken: null,
     refreshToken: null,

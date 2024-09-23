@@ -8,7 +8,6 @@ const isValidForLogin = (data) => {
       .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
       .required(),
   });
-
   return schema.validateAsync(data);
 };
 
@@ -21,9 +20,7 @@ const isValidForSignup = (data) => {
       .string()
       .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
       .required(),
-    repeatPassword: joi.ref("password"),
   });
-
   return schema.validateAsync(data);
 };
 
@@ -31,7 +28,6 @@ const isValidForLogout = (data) => {
   const schema = joi.object({
     refreshToken: joi.string().required(),
   });
-
   return schema.validateAsync(data);
 };
 
